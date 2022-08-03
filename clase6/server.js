@@ -3,7 +3,7 @@ const Container = require('./container');
 const generateRandomNumber = require('./helpers');
 
 const app = express();
-const PORT = 8090;
+const PORT = 8080;
 const productsContainer = new Container('products.txt');
 
 const getRandomProductById = async () => {
