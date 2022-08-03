@@ -7,9 +7,8 @@ class Container {
 
     async save(product) {
         const allProducts = await this.getAll();
-        if (!allProducts.length) {
-            product.id = 1;
-        } else {
+        if (!allProducts.length) product.id = 1;
+        else {
             const lastProductId = allProducts[allProducts.length - 1].id;
             product.id = lastProductId + 1;
         }
