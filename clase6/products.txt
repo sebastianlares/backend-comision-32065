@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Desktop PC",
+    "price": 1800,
+    "thumbnail": "A desktop PC"
+  },
+  {
+    "id": 2,
+    "name": "Headphones Set",
+    "price": 240,
+    "thumbnail": "A set of Headphones"
+  },
+  {
+    "id": 3,
+    "name": "Pizza",
+    "price": 180,
+    "thumbnail": "A yummy Pizza"
+  }
+]
