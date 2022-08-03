@@ -3,4 +3,12 @@ const generateRandomNumber = (min, max) => {
     return Math.round(randomNumber);
 };
 
-module.exports = generateRandomNumber;
+const getRandomProductById = async productsContainer => {
+    const allProducts = await productsContainer.getAll();
+    const lastProductId = allProducts[allProducts.length - 1].id;
+    const randomId = generateRandomNumber(1, lastProductId);
+    const randomProduct = allProducts.filter(product => product.id === randomId);
+    return randomProduct[0];
+};
+
+module.exports = getRandomProductById;
