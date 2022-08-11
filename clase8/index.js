@@ -8,10 +8,17 @@ const productsRouter = new Router();
 productsRouter.use(express.json());
 productsRouter.use(express.urlencoded({ extended: true }));
 
+const productExists = id => {
+    const product = productsApi.getById(id);
+    return product;
+};
+
+const sendErrorStatus = res => res.status(404).json('No products were found');
+
 productsRouter.get('/', (req, res) => {
     const allProducts = productsApi.getAll();
     if (!allProducts.length) {
-        res.status(404).json('No products were found');
+        sendErrorStatus(res);
         return;
     }
     res.json(allProducts);
@@ -26,7 +33,7 @@ productsRouter.post('/', (req, res) => {
 productsRouter.get('/:id', (req, res) => {
     const productId = Number(req.params.id);
     if (!productExists(productId)) {
-        res.status(404).json({ error: 'Product not found' });
+        sendErrorStatus(res);
         return;
     }
     res.json(product);
@@ -35,7 +42,7 @@ productsRouter.get('/:id', (req, res) => {
 productsRouter.delete('/:id', (req, res) => {
     let productId = Number(req.params.id);
     if (!productExists(productId)) {
-        res.status(404).json({ error: 'Product not found' });
+        sendErrorStatus(res);
         return;
     }
     const productsAray = productsApi.deleteById(productId);
@@ -45,7 +52,7 @@ productsRouter.delete('/:id', (req, res) => {
 productsRouter.put('/:id', (req, res) => {
     const productIdToUpdate = Number(req.params.id);
     if (!productExists(productIdToUpdate)) {
-        res.status(404).json({ error: 'Product not found' });
+        sendErrorStatus(res);
         return;
     }
     let newProduct = req.body;
@@ -53,11 +60,6 @@ productsRouter.put('/:id', (req, res) => {
     const updatedProductsArray = productsApi.updateById(newProduct, productIdToUpdate);
     res.json(updatedProductsArray);
 });
-
-const productExists = id => {
-    const product = productsApi.getById(id);
-    return product;
-};
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
