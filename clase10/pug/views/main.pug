@@ -1,0 +1,28 @@
+
+html
+    head
+        title= title
+    body
+        h3='Productos'
+        if listExists
+            table
+                thead 
+                    tr 
+                        th='Nombre'
+                        th='Precio'
+                        th='Foto'
+                tbody 
+                    each product in products
+                        tr 
+                            td=product.title 
+                            td=product.price 
+                            td
+                                img(src=product.thumbnail, alt="product")  
+                            
+        else  
+            h1= message
+        button 
+            a(href="/")='Volver al formulario' 
+
+
+    
