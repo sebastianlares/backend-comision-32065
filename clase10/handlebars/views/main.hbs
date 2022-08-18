@@ -1,0 +1,31 @@
+<div class='container mt-3' style="width: 300px;">
+    <caption>Productos</caption>
+    <table class='jumbotron' style="width: 300px; height: 300px;">
+        {{#if listExists}}
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productsList}}
+                    <div>
+                        <tr class='form-group'>
+                            <td class='m-4 text-center'>{{this.title}}</td>
+                            <td class='m-4 text-center'>{{this.price}}</td>
+                            <td class='m-4 text-center'>
+                                <img src={{this.thumbnail}} alt='product' style='width: 40px;' />
+                            </td>
+                        </tr>
+                    </div>
+                {{/each}}
+            </tbody>
+        {{else}}
+            <h3 style='font-size: 20px; color: black;'>No se encontraron productos<h3/>
+        {{/if}}
+    </table>
+            <button type="button" class="btn btn-primary"><a href="/" style="color: black;">Volver al formulario</a></button>
+
+</div>
