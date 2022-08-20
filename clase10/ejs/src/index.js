@@ -9,7 +9,7 @@ app.use(express.static('public'));
 const productsApi = new ProductsApi();
 
 app.set('views', './views');
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 app.post('/products', (req, res) => {
     const newProduct = req.body;
@@ -20,10 +20,11 @@ app.post('/products', (req, res) => {
 app.get('/products', (req, res) => {
     const products = productsApi.getAll();
     if (!products.length) {
-        res.render('main', { message: 'No se encontraron productos' });
+        console.log('entra');
+        res.render('index', { message: 'No se encontraron productos', listExists: false });
         return;
     }
-    res.render('main', { products: products, listExists: true });
+    res.render('index', { products, listExists: true });
 });
 
 const PORT = 8090;
