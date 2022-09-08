@@ -2,15 +2,15 @@ import knex from 'knex';
 import config from '../src/config/index.js';
 
 //------------------------------------------
-// productos en MariaDb
+// productos en MySql
 (async () => {
-  const mariaDbClient = knex(config.mariaDb);
+  const mySqlClient = knex(config.mysql);
   const sqliteClient = knex(config.sqlite3);
 
   try {
-    await mariaDbClient.schema.dropTableIfExists('products');
+    await mySqlClient.schema.dropTableIfExists('products');
     //Implementar creación de tabla
-    await mariaDbClient.schema.createTable('products', table => {
+    await mySqlClient.schema.createTable('products', table => {
       table.increments('id').primary();
       table.string('nombre').notNullable();
       table.float('precio').notNullable();
@@ -20,7 +20,7 @@ import config from '../src/config/index.js';
   } catch (error) {
     console.log(error);
   } finally {
-    mariaDbClient.destroy();
+    mySqlClient.destroy();
   }
 
   //------------------------------------------

@@ -6,12 +6,12 @@ export default {
     },
     useNullAsDefault: true,
   },
-  mariaDb: {
+  mysql: {
     client: 'mysql',
     connection: {
       host: 'localhost',
       user: 'root',
-      password: 'AHV90ry4090420202090??',
+      password: '',
       database: 'coderhouse',
     },
   },
