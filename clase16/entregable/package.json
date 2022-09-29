@@ -8,7 +8,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "create:tables": "node ./scripts/createTables.js",
         "start:main": "node ./src/index.js",
-        "start": "npm run create:tables && npm start:main",
+        "start": "npm run create:tables && npm run start:main",
         "dev": "node ./scripts/createTables.js && node ./src/index.js"
     },
     "keywords": [],
