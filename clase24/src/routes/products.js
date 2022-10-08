@@ -1,13 +1,10 @@
 const express = require('express');
 const { Router } = express;
-const { getRandomProducts } = require('../helpers/index.js');
+const auth = require('../middlewares/index.js');
+const controller = require('../controllers/products.js');
 
 const productsRouter = new Router();
 
-productsRouter.get('/', (req, res) => {
-  const products = getRandomProducts(5);
-  console.log(products);
-  res.json(products);
-});
+productsRouter.get('/', auth, controller.getRandomProducts);
 
 module.exports = productsRouter;

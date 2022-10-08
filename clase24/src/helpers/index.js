@@ -9,13 +9,10 @@ const generateRandomProduct = () => {
 };
 
 const getRandomProducts = amount => {
-  console.log('entra en func');
   const products = [];
   let incrementor = 0;
   while (incrementor < amount) {
-    console.log('entra en while');
     const product = generateRandomProduct();
-    console.log(product);
     products.push(product);
     incrementor++;
   }
