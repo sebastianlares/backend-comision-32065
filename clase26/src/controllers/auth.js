@@ -1,7 +1,6 @@
 class Controller {
   home(req, res) {
-    const user = req.session.user;
-    res.render('home', { nombre: user });
+    res.render('home', { nombre: req.user.username });
   }
 
   login(req, res) {
@@ -9,17 +8,18 @@ class Controller {
   }
 
   postLogin(req, res) {
-    const { nombre } = req.body;
-    req.session.user = nombre;
     res.redirect('/');
   }
 
   logout(req, res) {
-    const user = req.session.user;
     req.session.destroy(err => {
-      if (!err) res.render('logout', { nombre: user });
+      if (!err) res.render('logout', { nombre: req.user.username });
       else res.send({ status: 'Logout ERROR', body: err });
     });
+  }
+
+  getFailLogin(req, res) {
+    res.render('failLogin');
   }
 }
 

@@ -30,4 +30,9 @@ const messagesSchema = new mongoose.Schema(
   { _id: false },
 );
 
-module.exports = { productschema, messagesSchema };
+const User = mongoose.model('Users', {
+  username: String,
+  password: String,
+});
+
+module.exports = { productschema, messagesSchema, User };

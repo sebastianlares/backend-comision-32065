@@ -31,4 +31,8 @@ const getFormatedDate = () => {
   return date;
 };
 
-module.exports = { getRandomProducts, getFormatedDate };
+const createHash = password => bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+
+const isValidPassword = (user, password) => bCrypt.compareSync(password, user.password);
+
+module.exports = { getRandomProducts, getFormatedDate, createHash, isValidPassword };
