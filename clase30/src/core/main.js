@@ -8,12 +8,11 @@ const { sessionConfig } = require('./routes/session.js');
 const { User } = require('./schemas/schemas');
 const passport = require('passport');
 const { Strategy: LocalStrategy } = require('passport-local');
-const loginController = require('./controllers/auth.js');
-const infoController = require('./controllers/info.js');
+const loginController = require('../core/controllers/auth.js');
+const infoController = require('../core/controllers/info.js');
 const registerController = require('./controllers/register.js');
 const auth = require('./middlewares/index.js');
 const { createHash, isValidPassword } = require('./helpers/index.js');
-const config = require('./config/config.js');
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new Socket(httpServer);
@@ -107,7 +106,4 @@ app.get('/register', registerController.getRegister);
 app.post('/register', passport.authenticate('register', { failureRedirect: '/failRegister' }), registerController.postRegister);
 app.get('/failRegister', registerController.getFailRegister);
 
-const connectedServer = httpServer.listen(config.args.PORT, () => {
-  console.log(`Servidor http escuchando en el puerto ${connectedServer.address().port}`);
-});
-connectedServer.on('error', error => console.log(`Error en servidor ${error}`));
+module.exports = httpServer;

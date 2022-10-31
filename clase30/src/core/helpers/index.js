@@ -1,5 +1,9 @@
 const faker = require('faker');
 const bCrypt = require('bcrypt');
+const { fork } = require('child_process');
+const numCpus = require('os').cpus().length;
+const os = require('os');
+const cluster = require('cluster');
 
 const generateRandomProduct = () => {
   return {
@@ -33,6 +37,7 @@ const getFormatedDate = () => {
 };
 
 const getProcessInfo = () => {
+  console.log(os.cpus().length);
   return {
     argvs: process.argv,
     so: process.platform,
@@ -41,11 +46,38 @@ const getProcessInfo = () => {
     id: process.pid,
     cwd: process.cwd(),
     path: process.title,
+    processors: os.cpus().length,
   };
+};
+
+const runAsFork = port => {
+  const forked = fork('./src/core/forkedMain.js');
+  const msg = { action: 'start', port: port };
+  forked.send(msg);
+};
+
+const runAsCluster = (port, app) => {
+  console.log(`Primary ${process.pid} is running`);
+  if (cluster.isMaster) {
+    for (let i = 0; i < numCpus; i++) {
+      cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+      console.log(`Work ${worker.process.pid} died`);
+      cluster.fork();
+    });
+  } else {
+    const connectedServer = app.listen(port, () => {
+      console.log(`Servidor http escuchando en el puerto ${connectedServer.address().port}  PID ${process.pid}`);
+    });
+    connectedServer.on('error', error => console.log(`Error en servidor ${error}`));
+    console.log(`Worker ${process.pid} started`);
+  }
 };
 
 const createHash = password => bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 
 const isValidPassword = (user, password) => bCrypt.compareSync(password, user.password);
 
-module.exports = { getRandomProducts, getFormatedDate, createHash, isValidPassword, getProcessInfo };
+module.exports = { getRandomProducts, getFormatedDate, createHash, isValidPassword, getProcessInfo, runAsCluster, runAsFork };
