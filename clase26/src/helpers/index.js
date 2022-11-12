@@ -1,4 +1,5 @@
 const faker = require('faker');
+const bCrypt = require('bcrypt');
 
 const generateRandomProduct = () => {
   return {

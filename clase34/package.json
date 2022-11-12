@@ -1,12 +1,36 @@
 {
-  "name": "clase34",
+  "name": "clase30-entregable",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:main": "node ./index.js -p 8090 -m CLUSTER",
+    "start": "npm run start:main",
+    "dev": "nodemon ./index.js -p 8090"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
+    "connect-mongo": "^4.5.0",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.2",
+    "faker": "^5.5.3",
+    "mongoose": "^6.6.1",
+    "normalizr": "^3.6.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "pino": "^8.7.0",
+    "socket.io": "^4.1.3",
+    "yargs": "^17.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
