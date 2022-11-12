@@ -1,8 +1,10 @@
 const yargs = require('yargs/yargs')(process.argv.slice(2));
+const dotenv = require('dotenv');
+dotenv.config();
 
 const args = yargs
   .default({
-    PORT: 8080,
+    PORT: 8090,
     MODE: 'FORK',
   })
   .alias({
@@ -12,7 +14,7 @@ const args = yargs
 
 module.exports = {
   mongodb: {
-    cnxStr: 'mongodb://localhost/ecommerce',
+    cnxStr: `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.89vsy.mongodb.net/?retryWrites=true&w=majority`,
     options: {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -20,7 +22,16 @@ module.exports = {
     },
   },
   fileSystem: {
-    path: './DB',
+    db: `${__basedir}/DB/messages.json`,
   },
   args,
+  session: {
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    cookie: {
+      maxAge: 600000,
+    },
+  },
 };

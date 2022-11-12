@@ -11,7 +11,7 @@ class Controller {
   getRandomNumbers(req, res) {
     let numbers = req.query.cant;
     if (!numbers) numbers = 100000000;
-    const forkedExec = fork('./src/helpers/fork.js', [`${numbers}`]);
+    const forkedExec = fork(`${__basedir}/src/core/helpers/fork.js`, [`${numbers}`]);
     forkedExec.send('start');
     forkedExec.on('message', suma => {
       res.json(suma);

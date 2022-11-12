@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:main": "node ./index.js -p 8090 -m CLUSTER",
-    "start": "node index.js",
+    "start": "node index.js -p 8090",
     "dev": "nodemon ./index.js -p 8090"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "connect-mongo": "^4.5.0",
+    "cookie-session": "^2.0.0",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.6",
     "express": "^4.17.1",

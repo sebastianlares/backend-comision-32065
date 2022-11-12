@@ -1,4 +1,3 @@
-const config = require('../core/api/contenedores/config/config');
 
 const generateRandomNumbers = (number, counter = 0, min = 1, numbersObject = {}) => {
   while (counter < number) {

@@ -6,7 +6,7 @@ class Controller {
   }
 
   login(req, res) {
-    logger.info('test');
+    logger.info(req);
 
     res.render('login');
   }

@@ -5,7 +5,7 @@ const levels = { info: 30, warn: 40, error: 50 };
 const streams = Object.keys(levels).map(level => {
   return {
     level: level,
-    stream: pinoLogger.destination(`${process.cwd()}/${level}.log`),
+    stream: pinoLogger.destination(`${__basedir}/${level}.log`),
   };
 });
 

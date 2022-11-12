@@ -4,7 +4,6 @@ const { Server: Socket } = require('socket.io');
 const apiRouter = require('./routes/api.js');
 const onSocketConnection = require('./api/sockets.js');
 const session = require('express-session');
-const { sessionConfig } = require('./routes/session.js');
 const { User } = require('./schemas/schemas');
 const passport = require('passport');
 const { Strategy: LocalStrategy } = require('passport-local');
@@ -15,6 +14,7 @@ const auth = require('./middlewares/index.js');
 const { createHash, isValidPassword } = require('./helpers/index.js');
 const compression = require('compression');
 const logger = require('./helpers/logger.js');
+const config = require('../config/config.js');
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new Socket(httpServer);
@@ -79,7 +79,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use(session(sessionConfig));
+app.use(session(config.session));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
