@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:main": "node ./index.js -p 8090 -m CLUSTER",
-    "start": "npm run start:main",
+    "start": "npm run index.js",
     "dev": "nodemon ./index.js -p 8090"
   },
   "keywords": [],
