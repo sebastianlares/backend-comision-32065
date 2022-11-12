@@ -1,0 +1,18 @@
+2022-11-12T03:19:10.445484+00:00 heroku[web.1]: State changed from crashed to starting
+2022-11-12T03:19:11.000000+00:00 app[api]: Build succeeded
+2022-11-12T03:19:13.641031+00:00 heroku[web.1]: Starting process with command `npm start`
+2022-11-12T03:19:16.374838+00:00 app[web.1]: 
+2022-11-12T03:19:16.374867+00:00 app[web.1]: > clase34-entregable@1.0.0 start
+2022-11-12T03:19:16.374868+00:00 app[web.1]: > node index.js -p 8090
+2022-11-12T03:19:16.374868+00:00 app[web.1]: 
+2022-11-12T03:19:17.611097+00:00 app[web.1]: Warning: connect.session() MemoryStore is not
+2022-11-12T03:19:17.611130+00:00 app[web.1]: designed for a production environment, as it will leak
+2022-11-12T03:19:17.611130+00:00 app[web.1]: memory, and will not scale past a single process.
+2022-11-12T03:19:17.613033+00:00 app[web.1]: Worker 22 started
+2022-11-12T03:19:17.613897+00:00 app[web.1]: Servidor http escuchando en el puerto 31881  PID 22
+2022-11-12T03:19:18.044991+00:00 heroku[web.1]: State changed from starting to up
+2022-11-12T03:19:19.288068+00:00 heroku[router]: at=info method=GET path="/" host=coderhouse-32065.herokuapp.com request_id=8c8dfd4d-8ad9-4994-8e64-2fee7214f7b9 fwd="181.46.160.163" dyno=web.1 connect=0ms service=10ms status=302 bytes=249 protocol=https
+2022-11-12T03:19:19.461767+00:00 heroku[router]: at=info method=GET path="/socket.io/?EIO=4&transport=polling&t=OHfsJSw" host=coderhouse-32065.herokuapp.com request_id=7f4cb018-649e-430a-aef4-26c4d62307e5 fwd="181.46.160.163" dyno=web.1 connect=0ms service=3ms status=200 bytes=255 protocol=https
+2022-11-12T03:19:19.596132+00:00 heroku[router]: at=info method=GET path="/login" host=coderhouse-32065.herokuapp.com request_id=7e52c78f-316f-499c-8dad-dfe25d0590bb fwd="181.46.160.163" dyno=web.1 connect=0ms service=8ms status=200 bytes=1486 protocol=https
+2022-11-12T03:19:19.871441+00:00 heroku[router]: at=info method=GET path="/css/estilos.css" host=coderhouse-32065.herokuapp.com request_id=b6d9e955-b607-4d0d-b9e4-f1931cf1fc12 fwd="181.46.160.163" dyno=web.1 connect=0ms service=4ms status=200 bytes=417 protocol=https
+2022-11-12T03:19:20.155732+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=coderhouse-32065.herokuapp.com request_id=0f0525b3-4a25-4f52-a526-f6fd014bf035 fwd="181.46.160.163" dyno=web.1 connect=0ms service=2ms status=200 bytes=262 protocol=https
